@@ -1,0 +1,19 @@
+# vim:ff=unix ts=2 sw=2 ai expandtab ft=yaml:
+---
+galaxy_info:
+  author: "Ton Kersten"
+  company: Smart Owl Consulting
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Fedora
+      versions:
+        - 27
+        - 28
+  categories:
+    - system
+dependencies: []

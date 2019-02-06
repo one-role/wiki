@@ -1,0 +1,30 @@
+---
+# vim:ff=unix ts=2 sw=2 ai expandtab ft=yaml.ansible:
+
+- name: wiki | ensure wiki certificate
+  copy:
+    content: "{{ lookup('file', ansible_topdir + '/files/wiki/wiki.' + running_env + '.example.net.crt') }}"
+    dest: "{{ '/etc/pki/tls/certs/wiki.' + running_env + '.example.net.crt' }}"
+    owner: root
+    group: root
+    mode: 0640
+    setype: etc_t
+
+- name: wiki | ensure wiki key
+  copy:
+    content: "{{ lookup('file', ansible_topdir + '/files/wiki/wiki.' + running_env + '.example.net.key') }}"
+    dest: "{{ '/etc/pki/tls/private/wiki.' + running_env + '.example.net.key' }}"
+    owner: root
+    group: root
+    mode: 0640
+    setype: etc_t
+
+- name: wiki | ensure wiki chainfile
+  copy:
+    content: "{{ lookup('file', ansible_topdir + '/files/wiki/wiki.' + running_env + '.example.net.chain') }}"
+    dest: "{{ '/etc/pki/tls/private/wiki.' + running_env + '.example.net.chain' }}"
+    owner: root
+    group: root
+    mode: 0640
+    setype: etc_t
+  when: ssl_chainfile is defined
